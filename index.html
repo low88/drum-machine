@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<title>MICROFONIA</title>
+<meta name="description" content="Drum machine a campioni: ogni suono viene dal microfono del telefono.">
+<meta name="theme-color" content="#121212">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Microfonia">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="app" id="app">
+  <header class="top">
+    <div class="row">
+      <div class="logo">MICRO<i id="logoDot"></i>FONIA</div>
+      <button class="lcd" id="lcd" aria-label="Tempo">
+        <span class="bpm" id="lcdBpm">120.00</span>
+        <span class="lcd-side"><span id="lcdInfo">A · 4 BATT</span><span id="lcdPos">—</span></span>
+        <span class="lcd-bars" id="lcdBars"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+      </button>
+    </div>
+    <div class="row transport">
+      <button class="play" id="playBtn" aria-label="Avvia"><span></span></button>
+      <button class="key rec" id="recBtn" aria-pressed="false"><i class="led"></i>REC</button>
+      <div class="pats" id="pats" role="group" aria-label="Pattern"></div>
+    </div>
+    <div class="row">
+      <div class="seg" id="loopSeg" role="group" aria-label="Lunghezza loop"></div>
+      <button class="key" id="genreBtn">Genere</button>
+      <button class="key" id="evoBtn" aria-pressed="false"><i class="led"></i>Evolvi</button>
+      <button class="key" id="sessBtn" aria-label="Sessioni" title="Sessioni">💾</button>
+    </div>
+  </header>
+
+  <section class="seq">
+    <div class="barnav">
+      <button class="key sm" id="pagePrev" aria-label="Battuta precedente">‹</button>
+      <canvas id="bars" aria-label="Mappa delle battute"></canvas>
+      <button class="key sm" id="pageNext" aria-label="Battuta successiva">›</button>
+    </div>
+    <div class="tools">
+      <div class="chips" id="modes"></div>
+      <span class="pageLbl mono" id="pageLbl">1/4</span>
+      <button class="key sm" id="followBtn" aria-pressed="true">Segui</button>
+      <button class="key sm" id="barMenu">⋯</button>
+    </div>
+    <div class="rack" id="rack"></div>
+  </section>
+
+  <nav class="decktabs" id="deckTabs">
+    <button data-d="suono">🎙 Suono</button>
+    <button data-d="pad">🥁 Pad</button>
+    <button data-d="surf">✋ Superficie</button>
+    <button data-d="ritmo">🔁 Ritmo</button>
+    <button data-d="fx">🎛 Effetti</button>
+  </nav>
+  <section class="deck" id="deck"></section>
+</main>
+
+<div class="toast" id="toast" role="status" hidden></div>
+<section class="sheet" id="sheet" hidden>
+  <div class="sheet-box">
+    <div class="sheet-head"><h2 id="sheetTitle"></h2><button class="x" id="sheetClose" aria-label="Chiudi">✕</button></div>
+    <div class="sheet-body" id="sheetBody"></div>
+  </div>
+</section>
+
+<script src="engine.js"></script>
+<script src="kit.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
